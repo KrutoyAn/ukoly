@@ -1,0 +1,39 @@
+### Úkol 1 - Rekurze:
+Napište funkci ``word_chain``, která na vstupu dostane libovolně velkou množinu slov a vrátí největší počet slov, 
+které lze zřetězit jeden po druhém tak, že první písmeno druhého slova je stejné jako poslední písmeno prvního slova. 
+Opakování slov není povoleno.
+
+
+# https://networkx.org/documentation/stable/reference/classes/digraph.html
+
+import networkx as nx
+from sympy import *
+
+def word_chain(words):
+    G = nx.DiGraph()  # Create an empty graph structure (a “null graph”) with no nodes and no edges
+    G.add_nodes_from(words)  # Add the nodes from any container - words = []
+    for word1 in words:
+        for word2 in words:
+            if word1 != word2 and word1[-1] == word2[0]:
+                G.add_edge(word1, word2)  # Add one edge
+    result = nx.algorithms.dag.dag_longest_path(G)
+    return print(f'list - {result} \ncount: {len(result)}')
+
+
+words = ['why', 'new', 'neural', 'moon']
+word_chain(words)
+
+### Úkol 2 - Prvočísla a palindromy
+- Připravte program, který vypíše první prvočíslo, které je větší než uživatelem zadaná hodnota a které je zároveň palindromem.
+
+from sympy import *
+
+def find_palindrome(number):
+    i = 0
+    while i == 0:
+        number += 1
+        if isprime(number) and str(number)[::-1] == str(number):
+            i = 1
+    return number
+
+print(find_palindrome(int(input())))
