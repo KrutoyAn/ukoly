@@ -16,12 +16,12 @@ def word_chain(words):
         for word2 in words:
             if word1 != word2 and word1[-1] == word2[0]:
                 G.add_edge(word1, word2)  # Add one edge
-    result = nx.algorithms.dag.dag_longest_path(G)
-    return print(f'list - {result} \ncount: {len(result)}')
+    return nx.algorithms.dag.dag_longest_path(G)
+
+words = ['giraffe', 'elephant', 'ant', 'tiger', 'racoon', 'cat', 'mouse', 'why', 'new', 'neural', 'song']
+print(f'list - {word_chain(words)} \ncount: {len(word_chain(words))}')
 
 
-words = ['why', 'new', 'neural', 'moon']
-word_chain(words)
 
 ### Úkol 2 - Prvočísla a palindromy
 - Připravte program, který vypíše první prvočíslo, které je větší než uživatelem zadaná hodnota a které je zároveň palindromem.
@@ -37,3 +37,5 @@ def find_palindrome(number):
     return number
 
 print(find_palindrome(int(input())))
+
+
